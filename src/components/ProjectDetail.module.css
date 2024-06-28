@@ -1,0 +1,55 @@
+.project_detail {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit; /* Garante que o texto siga a cor padrão do texto, não do link */
+    padding: 0 10px 0 0;
+    border: 1px solid var(--color--4); /* Cor da borda opcional */
+    border-radius: 8px; /* Bordas arredondadas */
+    transition: background-color 0.3s; /* Efeito de hover suave */
+    background-color: var(--color--2);
+  }
+
+
+  /* Estilo para os cards de projeto dentro da rolagem horizontal */
+
+  .project_detail:hover {
+    color: var(--color--7);
+    background-color: var(--color--3); /* Cor de fundo ao passar o mouse */
+    
+  }
+
+  .createdBy {
+    font-style: italic;
+    color: var(--color--6);
+    font-size: 0.9em;
+    margin-bottom: 1em;
+}
+  
+  .image_container img {
+    width: 130px; /* Largura fixa para a imagem */
+    height: 130px; /* Altura fixa para a imagem */
+    object-fit: cover; /* Garante que a imagem cubra o espaço */
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    margin-right: 20px; /* Espaço entre a imagem e o texto */
+    margin-bottom: -4px;
+  }
+  
+  .text_container {
+    flex: 1;
+  }
+  
+  .text_container h4, .text_container p, .text_container .tags {
+    margin: 0;
+    padding: 2px 0; /* Espaçamento vertical para manter o card compacto */
+  }
+  
+  .tags p {
+    display: inline-block;
+    background-color: var(--color--3);
+    border-radius: 5px;
+    padding: 2px 5px;
+    margin-right: 5px;
+    font-size: 0.8em;
+  }

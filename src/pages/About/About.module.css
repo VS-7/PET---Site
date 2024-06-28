@@ -1,0 +1,65 @@
+.about {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 80px;
+  }
+  
+  .about h2 {
+    font-size: 2rem;
+    color: #343a40;
+  }
+  
+  .about p {
+    font-size: 1.2rem;
+    color: #6c757d;
+  }
+  
+  .icons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  
+  .icon {
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .icon:hover {
+    transform: translateY(-5px);
+  }
+  
+  .icon span {
+    display: block;
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #6c757d;
+  }
+  
+  .btn {
+    display: flex;
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: var(--color--1);
+    background: var(--color-rgb);
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    text-align: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  /* Estilos para os ícones */
+  .iconAnimation {
+    font-size: 3rem;
+    color: var(--color-link);
+    transition: transform 0.3s ease;
+  }
+  
+  .iconAnimation:hover {
+    transform: scale(1.1);
+  }

@@ -1,0 +1,42 @@
+.container {
+  min-height: 50vh;
+  margin-bottom: 6em;
+}
+
+.navbarContainer {
+  padding-bottom: 60px;
+  padding-inline-end: 30px;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loading-text {
+  margin-top: 20px;
+  font-size: 15px;
+  color: #fff; /* Ajuste a cor conforme o tema */
+}
+
+.loader {
+  border: 6px solid var(--color--3);
+  border-top: 6px solid var(--color-link); /* Cor do carregamento */
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite; /* Animação de rotação */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+

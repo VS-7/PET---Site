@@ -1,0 +1,82 @@
+/* userPublications */
+.container {
+    flex: 1;
+    min-width: 300px;
+    margin-left: 30px;
+  }
+  
+  h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .post {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .post h4 {
+    margin: 0 0 5px 0;
+    font-size: 18px;
+  }
+  
+  .post p {
+    color: #777;
+  }
+  /* userCourses */
+  .container {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .course {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .course h4 {
+    margin: 0 0 5px 0;
+    font-size: 18px;
+  }
+  
+  .course p {
+    color: #777;
+  }
+  /* userParticipatedCourses.module.css */
+
+  .container {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .course {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .course h4 {
+    margin: 0 0 5px 0;
+    font-size: 18px;
+  }
+  
+  .course p {
+    color: #777;
+  }
+  
+  

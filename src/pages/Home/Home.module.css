@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+.container {
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .main {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  
+  .posts {
+    flex: 3;
+  }
+  
+  .sidebar {
+    flex: 1;
+    margin-left: 40px;
+  }
+
+  .logo {
+    width: 50px;
+  }
+  
+  .about {
+    margin-bottom: 40px;
+  }
+  
+  .about h2 {
+    margin-bottom: 16px;
+  }
+  
+  .topics h2 {
+    margin-bottom: 16px;
+  }
+  
+  .topics ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .topics li {
+    margin-bottom: 8px;
+  }
+
+  .maisEdicoes {
+    display: flex;
+    align-items: center;
+  }
+
+.maisEdicoes hr {
+    width: 75%;
+    margin-left: 5px;
+}
+  

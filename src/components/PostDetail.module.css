@@ -1,0 +1,93 @@
+
+
+.post_form input, .post_form textarea {
+    width: 100%;
+}
+
+.post_datail img{
+    max-width: 100%; 
+    display: block;
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+.post_detail {
+    flex: 0 0 auto; /* Impede que o card mude de tamanho */
+
+  }
+
+.post_datail h2 {
+    margin-bottom: 0.4em;
+}
+
+.post_datail .tags {
+    margin-bottom: 1.2em;
+    display: flex;
+}
+
+.tags p {
+    margin-right: .5em;
+}
+
+.tags span {
+    font-weight: bold;
+}
+
+.createdBy {
+    font-style: italic;
+    color: var(--color--6);
+    font-size: 0.9em;
+    margin-bottom: 1em;
+}
+
+@media (max-width: 768px) {
+    .post_form {
+        max-width: none;
+        margin: 0 auto; 
+        background-color: var(--color--2);
+        border-radius: 6px;
+        padding: 16px;
+        border: 1px solid var(--color--4);
+        margin-bottom: 10px; /* Removendo a largura máxima para telas menores */
+    }
+
+    .post_form input, .post_form textarea {
+        padding: 8px; /* Ajustando o padding para telas menores */
+        margin-bottom: 8px; /* Ajustando o espaçamento entre os elementos */
+    }
+
+    .post_datail img {
+        border-radius: 3px; /* Ajustando o raio da borda para telas menores */
+    }
+
+    .post_datail h2 {
+        font-size: 1.2em; /* Ajustando o tamanho da fonte para telas menores */
+    }
+
+    .createdBy {
+        font-size: 0.8em; /* Ajustando o tamanho da fonte para telas menores */
+    }
+}
+
+@media (min-width: 768px) {
+    .post_form {
+        max-width: 100%; 
+        margin: 0 auto; 
+        padding: 16px;
+        border-top: 1px solid var(--color--4);
+        border-bottom: 1px solid var(--color--4);
+    }
+    
+    .post_form input, .post_form textarea {
+        width: 100%;
+    }
+
+    .post_datail img{
+        max-width: 50%; 
+        max-height: 50%;
+        display: block;
+        margin: 0 auto;
+        border-radius: 10px;
+    }
+    
+}

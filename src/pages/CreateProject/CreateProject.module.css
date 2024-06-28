@@ -1,0 +1,51 @@
+.create_project {
+    text-align: center;
+}
+
+.create_project h2 {
+    font-size: 2.2em;
+}
+
+.create_project p{
+    color: var(--color--6);
+    margin-bottom: 2em;
+}
+
+.optionalText {
+  font-size: 12px; /* Tamanho de fonte pequeno */
+  font-style: italic; /* Estilo de fonte itálico para destacar */
+  color: #888; /* Cor de texto cinza para destacar */
+}
+
+.create_project button {
+    width: 100%;
+}
+
+.fileInput{
+    display: block;
+    margin-top: 10px;
+    cursor: pointer;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+
+
+
+
+
+
+@media (max-width: 768px) {
+    .create_project {
+        max-width: 100%; /* Reduzindo a largura máxima do componente em telas menores */
+    }
+
+    .create_project h2 {
+        font-size: 1.8em; /* Ajustando o tamanho da fonte do título para telas menores */
+    }
+
+    .optionalText {
+        font-size: 10px; /* Ajustando o tamanho da fonte para telas menores */
+    }
+}

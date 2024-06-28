@@ -1,0 +1,44 @@
+.publicationPage {
+    margin: 40px auto;
+    max-width: 800px;
+    padding: 20px;
+    background: var(--color--1);
+  }
+  
+  .section {
+    margin-bottom: 20px;
+  }
+  
+  .titulo {
+    font-size: 2em;
+    margin-bottom: 10px;
+  }
+  
+  .paragrafo {
+    font-size: large;
+    line-height: 1.4;
+    text-align: justify;
+  }
+  
+  .videoSection iframe {
+    width: 100%;
+    height: 315px;
+  }
+  
+  .linkSection a {
+    font-size: 1.2em;
+    color: var(--color-link);
+    text-decoration: none;
+  }
+  
+  .linkSection a:hover {
+    text-decoration: underline;
+  }
+  
+  .imageSection img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  
