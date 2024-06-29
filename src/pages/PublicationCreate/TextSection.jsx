@@ -19,7 +19,7 @@ const TextSection = ({ section, updateContent }) => {
       <textarea
         value={content.text || ''}
         onChange={handleChange}
-        placeholder="Adicione um texto para um tópico ou curso..."
+        placeholder="Adicione um parágrafo em sua publicação..."
       />
     </div>
   );

@@ -65,8 +65,8 @@
     justify-content: space-between;
   }
   
-  .leftColumn, .rightColumn {
-    width: 50%;
+  .leftColumn {
+    width: 80%;
   }
   
   .leftColumn {
@@ -75,6 +75,11 @@
   
   .rightColumn {
     padding-left: 5px;
+    width: 20%;
+  }
+
+  .rightColumn textarea{
+    height: 400px;
   }
   
   h3 {
@@ -108,7 +113,7 @@
   
   .sectionList {
     width: 100%;
-    max-width: 800px;
+    max-width: 1000px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -158,9 +163,13 @@
     border-radius: 5px;
     resize: none;
   }
+
+  .imageSection img {
+    width: 300px;
+  }
   
   .videoSection input {
-    width: 95%;
+    width: 85%;
     padding: 10px;
     border: 1px solid var(--color--4);
     border-radius: 5px;

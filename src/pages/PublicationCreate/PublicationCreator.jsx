@@ -1,21 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { db } from '../../firebase/config';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, doc, updateDoc } from 'firebase/firestore';
 import SectionList from './SectionList';
 import styles from './PublicationCreator.module.css';
 import { MdOutlineTitle } from "react-icons/md";
 import { FaParagraph, FaVideo, FaRegImage } from "react-icons/fa6";
 import { FaLink } from "react-icons/fa";
 import { useAuthValue } from '../../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
-const PublicationCreator = () => {
-  const [sections, setSections] = useState([]);
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+const PublicationCreator = ({ publication }) => {
+  const [sections, setSections] = useState(publication ? publication.sections : []);
+  const [title, setTitle] = useState(publication ? publication.title : '');
+  const [description, setDescription] = useState(publication ? publication.description : '');
   const { user } = useAuthValue();
-
+  const navigate = useNavigate();
 
   const addSection = (type) => {
     const newSection = { id: Date.now(), type, content: {} };
@@ -26,20 +27,33 @@ const PublicationCreator = () => {
     setSections(sections.map(section => section.id === id ? { ...section, content } : section));
   };
 
-  const saveCourse = async () => {
+  const savePublication = async () => {
     try {
-      await addDoc(collection(db, 'publications'), {
-        uid: user.uid,
-        title,
-        description,
-        sections,
-        createdAt: new Date(),
-        author: user.displayName 
-      });
-      alert('Course saved successfully!');
+      if (publication) {
+        const docRef = doc(db, 'publications', publication.id);
+        await updateDoc(docRef, {
+          title,
+          description,
+          sections,
+          // Não atualizar createdAt
+        });
+        alert('Publicação atualizada com sucesso!');
+        navigate('/')
+      } else {
+        await addDoc(collection(db, 'publications'), {
+          uid: user.uid,
+          title,
+          description,
+          sections,
+          createdAt: new Date(),
+          author: user.displayName
+        });
+        alert('Publicação criada com sucesso!');
+        navigate('/')
+      }
     } catch (error) {
-      console.error('Error saving course: ', error);
-      alert('Error saving course!');
+      console.error('Erro ao salvar a publicação: ', error);
+      alert('Erro ao salvar a publicação!');
     }
   };
 
@@ -47,27 +61,27 @@ const PublicationCreator = () => {
     <DndProvider backend={HTML5Backend}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2>O que você vai publicar hoje?</h2>
+          <h2>{publication ? 'Editar Publicação' : 'O que você vai publicar hoje?'}</h2>
           <div className={styles.toolbar}>
-           <div className={styles.toolbarButton}>
-                <button onClick={() => addSection('title')}><MdOutlineTitle size="30px"/></button>
-                <label >Adicionar Título</label>
+            <div className={styles.toolbarButton}>
+              <button onClick={() => addSection('title')}><MdOutlineTitle size="30px"/></button>
+              <label>Adicionar Título</label>
             </div>
             <div className={styles.toolbarButton}>
-                <button onClick={() => addSection('text')}><FaParagraph size="30px"/></button>
-                <label >Adicionar Parágrafo</label>
+              <button onClick={() => addSection('text')}><FaParagraph size="30px"/></button>
+              <label>Adicionar Parágrafo</label>
             </div>
             <div className={styles.toolbarButton}>
-                <button onClick={() => addSection('image')}><FaRegImage size="30px"/></button>
-                <label >Adicionar Imagem</label>
+              <button onClick={() => addSection('image')}><FaRegImage size="30px"/></button>
+              <label>Adicionar Imagem</label>
             </div>
             <div className={styles.toolbarButton}>
-                <button onClick={() => addSection('video')}><FaVideo size="30px"/></button>
-                <label >Adicionar Vídeo</label>
+              <button onClick={() => addSection('video')}><FaVideo size="30px"/></button>
+              <label>Adicionar Vídeo</label>
             </div>
             <div className={styles.toolbarButton}>
-                <button onClick={() => addSection('link')}><FaLink size="30px"/></button>
-                <label>Adicionar Link</label>
+              <button onClick={() => addSection('link')}><FaLink size="30px"/></button>
+              <label>Adicionar Link</label>
             </div>
           </div>
         </div>
@@ -92,8 +106,8 @@ const PublicationCreator = () => {
             />
           </div>
         </div>
-        <button onClick={saveCourse} className={styles.saveButton}>
-          Salvar Publicação
+        <button onClick={savePublication} className={styles.saveButton}>
+          {publication ? 'Atualizar Publicação' : 'Salvar Publicação'}
         </button>
       </div>
     </DndProvider>

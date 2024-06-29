@@ -23,17 +23,40 @@ const About = () => {
         pelo programa.
       </p>
       <div className={styles.icons}>
-        <div className={styles.icon}>
-          <FaGraduationCap className={styles.iconAnimation} />
-          <span>Ensino</span>
+        <div className={styles.card}>
+          <div className={styles.icon}>
+            <FaGraduationCap className={styles.iconAnimation} />
+            <span>Ensino</span>
+            <p>
+              No PET, o ensino vai além da sala de aula. Promovemos atividades que
+              ajudam os alunos a desenvolverem habilidades práticas e conhecimentos
+              interdisciplinares, preparando-os para os desafios do mercado de
+              trabalho e da vida acadêmica.
+            </p>
+          </div>
         </div>
-        <div className={styles.icon}>
-          <FaFlask className={styles.iconAnimation} />
-          <span>Pesquisa</span>
+        <div className={styles.card}>
+          <div className={styles.icon}>
+            <FaFlask className={styles.iconAnimation} />
+            <span>Pesquisa</span>
+            <p>
+              A pesquisa é um pilar fundamental do PET. Incentivamos os alunos a
+              explorarem questões científicas, desenvolvendo projetos que contribuem
+              para o avanço do conhecimento e para a solução de problemas
+              contemporâneos.
+            </p>
+          </div>
         </div>
-        <div className={styles.icon}>
-          <FaHandshake className={styles.iconAnimation} />
-          <span>Extensão</span>
+        <div className={styles.card}>
+          <div className={styles.icon}>
+            <FaHandshake className={styles.iconAnimation} />
+            <span>Extensão</span>
+            <p>
+              A extensão no PET envolve a aplicação do conhecimento acadêmico em
+              benefício da sociedade. Realizamos projetos que promovem a interação
+              entre a universidade e a comunidade, gerando impacto social positivo.
+            </p>
+          </div>
         </div>
       </div>
       <Link to="/criar-publicacao" className={styles.btn}>

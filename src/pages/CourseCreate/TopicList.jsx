@@ -87,7 +87,7 @@ const TopicList = () => {
         {topics.map(topic => (
           <div key={topic.id} className={styles.courseItem}>
             <h2>{topic.title}</h2>
-            <a href={`/cursos/${courseId}/topico/${topic.id}`}>Ver Páginas</a>
+            <a href={`/cursos/${courseId}/topico/${topic.id}`}>Ver Página</a>
             <button onClick={() => editTopic(topic.id)} className={styles.buttons}>Editar</button>
             <button onClick={() => confirmDeleteTopic(topic)} className={styles.buttonRemove}>Excluir</button>
           </div>
@@ -96,8 +96,10 @@ const TopicList = () => {
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <h2>Confirmação de Exclusão</h2>
         <p>Tem certeza de que deseja excluir o tópico "{topicToDelete?.title}"?</p>
-        <button onClick={deleteTopic} className={styles.buttons}>Confirmar</button>
-        <button onClick={() => setIsModalOpen(false)} className={styles.buttons}>Cancelar</button>
+        <div className={styles.actions}>
+            <button onClick={deleteTopic} className={styles.buttonRemove}>Confirmar</button>
+            <button onClick={() => setIsModalOpen(false)} className={styles.buttons}>Cancelar</button>
+        </div>
       </Modal>
     </div>
   );

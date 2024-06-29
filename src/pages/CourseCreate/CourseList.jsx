@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../firebase/config';
 import CourseCard from './CourseCard';
-import styles from './PublicationCreator.module.css';
+import styles from '../PublicationCreate/PublicationCreator.module.css';
 
 const CourseList = () => {
   const [courses, setCourses] = useState([]);

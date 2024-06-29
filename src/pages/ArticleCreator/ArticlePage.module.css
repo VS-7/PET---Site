@@ -1,5 +1,6 @@
-.publicationPage {
+.articlePage {
     margin: 40px auto;
+    width: 100%;
     max-width: 800px;
     padding: 20px;
     background: var(--color--1);
@@ -8,13 +9,18 @@
   .section {
     margin-bottom: 20px;
   }
+
+  .summary {
+    margin-top: 25px;
+    margin-bottom: 45px;
+  }
   
   .titulo {
     font-size: 2em;
     margin-bottom: 10px;
   }
   
-  .paragrafo {
+  .bibliography {
     font-size: large;
     line-height: 1.4;
     text-align: justify;
@@ -41,13 +47,13 @@
     display: block;
     margin: 0 auto;
   }
-
+  
   .actions {
     display: flex;
     gap: 10px;
   }
   
-  .buttons{
+  .buttons {
     background: var(--color-rgb);
     border: none;
     width: 100px;
@@ -57,12 +63,12 @@
     color: var(--color--1);
     cursor: pointer;
   }
-
-  .buttons:hover{
+  
+  .buttons:hover {
     background: var(--color-link);
   }
-
-  .buttonRemove{
+  
+  .buttonRemove {
     background: red;
     border: none;
     width: 100px;
@@ -72,7 +78,18 @@
     color: var(--color--1);
     cursor: pointer;
   }
-
-  .buttonRemove:hover{
+  
+  .buttonRemove:hover {
     background: rgb(241, 126, 126);
   }
+
+.pdfView {
+    display: flex;
+    gap: 50px;
+}
+
+.pdfView svg{
+    color: var(--color-link);
+}
+
+  

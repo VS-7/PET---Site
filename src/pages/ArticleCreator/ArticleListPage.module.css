@@ -1,0 +1,35 @@
+/* ArticleListPage.module.css */
+.articleListPage {
+    padding: 20px;
+  }
+  
+  .articleListPage h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  
+  .articleList {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .articleItem {
+    margin-bottom: 10px;
+  }
+  
+  .articleLink {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .articleTitle {
+    font-size: 1.5em;
+    margin: 0;
+  }
+  
+  .articleAuthor {
+    font-size: 1em;
+    color: #555;
+  }
+  

@@ -9,6 +9,8 @@
   .about h2 {
     font-size: 2rem;
     color: #343a40;
+    text-align: center;
+    margin-bottom: 35px;
   }
   
   .about p {
@@ -22,17 +24,30 @@
     margin-top: 20px;
   }
   
-  .icon {
+  .card {
+    background-color: var(--color--1);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
     text-align: center;
     transition: transform 0.3s ease;
+    max-width: 300px;
+    margin: 10px;
   }
   
-  .icon:hover {
-    transform: translateY(-5px);
+  .card:hover {
+    transform: translateY(-10px);
   }
   
   .icon span {
     display: block;
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: #343a40;
+    font-weight: bold;
+  }
+  
+  .icon p {
     margin-top: 10px;
     font-size: 1rem;
     color: #6c757d;
@@ -63,3 +78,4 @@
   .iconAnimation:hover {
     transform: scale(1.1);
   }
+  

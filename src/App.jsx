@@ -20,13 +20,18 @@ import Post from './pages/Post/Post';
 import ResetPassword from './components/ResetPassword';
 import PublicationCreator from './pages/PublicationCreate/PublicationCreator';
 import CoursePage from './pages/CourseCreate/CoursePage';
-import CourseList from './pages/PublicationCreate/CourseList';
+import CourseList from './pages/CourseCreate/CourseList';
 import TopicList from './pages/CourseCreate/TopicList';
 import TopicPage from './pages/CourseCreate/TopicPage';
 import PublicationPage from './pages/PublicationCreate/PublicationPage';
 import TopicView from './pages/CourseCreate/TopicView';
 import CourseView from './pages/CourseCreate/CourseView';
 import BusSchedule from './pages/BusSchedule/BusSchedule';
+import EditPublicationPage from './pages/PublicationCreate/EditPublicationPage';
+import ArticleCreator from './pages/ArticleCreator/ArticleCreator';
+import ArticlePage from './pages/ArticleCreator/ArticlePage';
+import ArticleEditPage from './pages/ArticleCreator/ArticleEditPage';
+import ArticleListPage from './pages/ArticleCreator/ArticleListPage';
 
 function App() {
 
@@ -78,12 +83,17 @@ function App() {
               <Route path="/sobre" element={<About />} />
               <Route path="/horario-onibus" element={<BusSchedule />} />
               <Route path='/resetPassword' element={<ResetPassword />} />
+             {/*Publicações*/}
               <Route 
                 path='/criar-publicacao' 
                 element={user ? <PublicationCreator /> : <Navigate to="/" />} />
               <Route 
                 path='/publicacao/:publicationId' 
-                element={<PublicationPage />} />
+                element={user ? <PublicationPage /> : <Navigate to="/" />} />
+             <Route 
+                path='/editar-publicacao/:publicationId' 
+                element={<EditPublicationPage />} /> 
+              {/*Cursos*/}
               <Route 
                 path='/cursos/:courseId/topico/:topicId' 
                 element={user ? <TopicView /> : <Navigate to="/" />} />   
@@ -102,6 +112,19 @@ function App() {
              <Route 
                 path='/cursos/:courseId' 
                 element={user ? <CourseView /> : <Navigate to="/" />} />   
+              {/*Artigos*/}
+              <Route 
+                path='/criar-artigo' 
+                element={user ? <ArticleCreator /> : <Navigate to="/" />} />   
+              <Route 
+                path='/artigos/:articleId' 
+                element={user ? <ArticlePage /> : <Navigate to="/" />} />   
+              <Route 
+                path='/editar-artigo/:articleId' 
+                element={user ? <ArticleEditPage /> : <Navigate to="/" />} />   
+              <Route 
+                path='/artigos' 
+                element={user ? <ArticleListPage /> : <Navigate to="/" />} />   
              <Route 
                 path='/dashboard' 
                 element={user ? <Dashboard /> : <Navigate to="/" />} />

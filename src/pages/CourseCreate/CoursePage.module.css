@@ -96,6 +96,11 @@
     text-decoration: underline;
   }
 
+  .actions {
+    display: flex;
+    gap: 10px;
+  }
+
   .buttons{
     background: var(--color-rgb);
     border: none;

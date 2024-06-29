@@ -1,3 +1,4 @@
+// UserParticipatedCourses.js
 import React, { useEffect, useState } from 'react';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { db } from '../../firebase/config';
@@ -27,6 +28,7 @@ const UserParticipatedCourses = ({ userId }) => {
         <div key={course.id} className={styles.course}>
           <h4>{course.title}</h4>
           <p>{course.description}</p>
+          <a href={`/cursos/${course.id}`}>Abir curso</a>
         </div>
       ))}
     </div>

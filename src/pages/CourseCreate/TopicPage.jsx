@@ -8,7 +8,7 @@ import styles from '../PublicationCreate/PublicationCreator.module.css';
 import { MdOutlineTitle } from "react-icons/md";
 import { FaParagraph, FaVideo, FaRegImage } from "react-icons/fa6";
 import { FaLink } from "react-icons/fa";
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useAuthValue } from '../../../context/AuthContext';
 
 const TopicPage = () => {
@@ -16,6 +16,7 @@ const TopicPage = () => {
   const [title, setTitle] = useState('');
   const { courseId, topicId } = useParams();
   const { user } = useAuthValue();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchTopic = async () => {
@@ -47,7 +48,8 @@ const TopicPage = () => {
         uid: user.uid,
         title,
         sections,
-        updatedAt: new Date()
+        updatedAt: new Date(),
+        author: user.displayName
       });
       alert('Página salva com sucesso!');
     } catch (error) {

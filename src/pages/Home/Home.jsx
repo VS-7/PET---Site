@@ -72,7 +72,7 @@ const Home = () => {
               alt="logo" 
               className={styles.logo} 
             />
-            <p>Conexão de Saberes é um material de distribuição gratuita...</p>
+            <p>PET - Conexões Ciência da Computação...</p>
           </div>
           <div className={styles.topics}>
           <div className={styles.maisEdicoes}>

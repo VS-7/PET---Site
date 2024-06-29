@@ -20,7 +20,7 @@ const TitleSection = ({ section, updateContent }) => {
         type="text"
         value={content.title || ''}
         onChange={handleChange}
-        placeholder="Adicione um titulo para um tópico ou curso..."
+        placeholder="Adicione um titulo para sua publicação..."
       />
     </div>
   );

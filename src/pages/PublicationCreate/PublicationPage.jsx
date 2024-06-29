@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { doc, getDoc } from 'firebase/firestore';
+import { useParams, useNavigate } from 'react-router-dom';
+import { doc, getDoc, deleteDoc } from 'firebase/firestore';
 import { db } from '../../firebase/config';
 import styles from './PublicationPage.module.css';
+import { useAuthValue } from '../../../context/AuthContext';
+import Modal from '../../components/Authentication/Modal';
 
 const PublicationPage = () => {
   const { publicationId } = useParams();
   const [publication, setPublication] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { user } = useAuthValue();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    console.log('publicationId:', publicationId);
-    const fetchpublication = async () => {
+    const fetchPublication = async () => {
       if (!publicationId) {
         console.error('Invalid publicationId');
         return;
@@ -20,7 +24,7 @@ const PublicationPage = () => {
         const docRef = doc(db, 'publications', publicationId);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-          setPublication(docSnap.data());
+          setPublication({ id: docSnap.id, ...docSnap.data() });
         } else {
           console.log('No such document!');
         }
@@ -29,7 +33,7 @@ const PublicationPage = () => {
       }
     };
 
-    fetchpublication();
+    fetchPublication();
   }, [publicationId]);
 
   if (!publication) {
@@ -75,6 +79,21 @@ const PublicationPage = () => {
     }
   };
 
+  const handleEdit = () => {
+    navigate(`/editar-publicacao/${publicationId}`, { state: { publication } });
+  };
+
+  const handleDelete = async () => {
+    try {
+      await deleteDoc(doc(db, 'publications', publicationId));
+      alert('Publicação excluída com sucesso!');
+      navigate('/');
+    } catch (error) {
+      console.error('Erro ao excluir publicação:', error);
+      alert('Erro ao excluir publicação!');
+    }
+  };
+
   return (
     <div className={styles.publicationPage}>
       {publication.author && <p className={styles.author}>Publicado por {publication.author}</p>}
@@ -85,8 +104,21 @@ const PublicationPage = () => {
         <div key={section.id} className={styles.section}>
           {renderSection(section)}
         </div>
-
       ))}
+      {user.uid === publication.uid && (
+        <div className={styles.actions}>
+          <button onClick={handleEdit} className={styles.buttons}>Editar</button>
+          <button onClick={() => setIsModalOpen(true)} className={styles.buttonRemove}>Excluir</button>
+        </div>
+      )}
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        <h2>Confirmação de Exclusão</h2>
+        <p>Tem certeza de que deseja excluir esta publicação?</p>
+        <div className={styles.actions}>
+            <button onClick={handleDelete} className={styles.buttonRemove}>Confirmar</button>
+            <button onClick={() => setIsModalOpen(false)} className={styles.buttons}>Cancelar</button>
+        </div>
+      </Modal>
     </div>
   );
 };

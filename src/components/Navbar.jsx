@@ -67,6 +67,11 @@ const Navbar = () => {
                     </NavLink>
                   </li>
                   <li>
+                    <NavLink to="/artigos" className={({ isActive }) => (isActive ? styles.active : '')}>
+                      ARTIGOS
+                    </NavLink>
+                  </li>
+                  <li>
                     <NavLink to="/dashboard" className={({ isActive }) => (isActive ? styles.active : '')}>
                       DASHBOARD
                     </NavLink>
@@ -82,6 +87,9 @@ const Navbar = () => {
                         </NavLink>
                         <NavLink to="/criar-curso" className={styles.dropdownItem}>
                           Criar um Curso
+                        </NavLink>
+                        <NavLink to="/criar-artigo" className={styles.dropdownItem}>
+                          Publicar Artigo
                         </NavLink>
                       </div>
                     )}

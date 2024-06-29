@@ -66,7 +66,8 @@ const CoursePage = () => {
           description: courseDescription,
           image: imageURL,
           createdAt: new Date(),
-          author: user.displayName
+          author: user.displayName,
+          participants: []
         });
         newCourse = {
           id: docRef.id,
@@ -75,7 +76,8 @@ const CoursePage = () => {
           description: courseDescription,
           image: imageURL,
           createdAt: new Date(),
-          author: user.displayName
+          author: user.displayName,
+          participants: []
         };
       }
       setCourses([...courses, newCourse]);
