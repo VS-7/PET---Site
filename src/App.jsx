@@ -32,6 +32,8 @@ import ArticleCreator from './pages/ArticleCreator/ArticleCreator';
 import ArticlePage from './pages/ArticleCreator/ArticlePage';
 import ArticleEditPage from './pages/ArticleCreator/ArticleEditPage';
 import ArticleListPage from './pages/ArticleCreator/ArticleListPage';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import PetianosArea from './pages/PetianosArea/PetianoArea';
 
 function App() {
 
@@ -67,6 +69,7 @@ function App() {
     <p className="loading-text">Carregando...</p>
   </div>
   );
+
 
   return (
     <div className='App'>
@@ -128,9 +131,17 @@ function App() {
              <Route 
                 path='/dashboard' 
                 element={user ? <Dashboard /> : <Navigate to="/" />} />
+                 <Route
+                  path='/area-petianos'
+                  element={
+                    <PrivateRoute allowedRoles={['petiano', 'tutora']}>
+                      <PetianosArea />
+                    </PrivateRoute>
+                  }
+                />
             </Routes>
           </div>
-          
+          <Footer />
         </BrowserRouter>
       </AuthProvider>
       </div>

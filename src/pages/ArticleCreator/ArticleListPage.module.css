@@ -1,6 +1,9 @@
 /* ArticleListPage.module.css */
 .articleListPage {
     padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
   }
   
   .articleListPage h2 {
@@ -15,7 +18,12 @@
   }
   
   .articleItem {
+    display: flex;
     margin-bottom: 10px;
+    border: 1px solid var(--color--3);
+    padding: 5px;
+    border-radius: 10px;
+    background-color: var(--color--2);
   }
   
   .articleLink {
@@ -24,12 +32,15 @@
   }
   
   .articleTitle {
-    font-size: 1.5em;
     margin: 0;
   }
   
   .articleAuthor {
     font-size: 1em;
     color: #555;
+  }
+
+  .date {
+    margin-top: -15px;
   }
   

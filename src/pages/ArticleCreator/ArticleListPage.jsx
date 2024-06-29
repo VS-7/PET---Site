@@ -37,9 +37,10 @@ const ArticleListPage = () => {
       <ul className={styles.articleList}>
         {articles.map((article) => (
           <li key={article.id} className={styles.articleItem}>
-            <Link to={`/article/${article.id}`} className={styles.articleLink}>
-              <h2 className={styles.articleTitle}>{article.title}</h2>
+            <Link to={`/artigos/${article.id}`} className={styles.articleLink}>
+              <h3 className={styles.articleTitle}>{article.title}</h3>
               <p className={styles.articleAuthor}>Autor: {article.author}</p>
+              <p className={styles.date}>Publicado em {article.createdAt.toDate().toLocaleDateString()}</p>
             </Link>
           </li>
         ))}

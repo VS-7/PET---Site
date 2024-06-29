@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuthentication } from '../hooks/useAuthentication';
 import { useAuthValue } from '../../context/AuthContext';
 import styles from './Navbar.module.css';
@@ -10,6 +10,7 @@ import Modal from './Authentication/Modal';
 import Login from './Authentication/Login';
 import Register from './Authentication/Register';
 import DocumentSearch from './Authentication/DocumentSearch';
+import { SlOptionsVertical } from "react-icons/sl";
 
 const Navbar = () => {
   const { user } = useAuthValue();
@@ -17,6 +18,10 @@ const Navbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isDropdownOpenTwo, setIsDropdownOpenTwo] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
+
+  const navigate = useNavigate();
 
   const openModal = (content) => {
     setModalContent(content);
@@ -26,10 +31,24 @@ const Navbar = () => {
   const closeModal = () => {
     setIsModalOpen(false);
     setModalContent(null);
+    setModalMessage('');
   };
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const toggleDropdownTwo = () => {
+    setIsDropdownOpenTwo(!isDropdownOpenTwo);
+  };
+
+  const handlePetianoAreaClick = () => {
+    if (user && user.role === 'petiano') {
+      navigate('/area-petianos');
+    } else {
+      setModalMessage('Você não tem permissão para acessar a Área do Petiano. Esta área é reservada apenas para petianos. Se você acha que isso é um erro, por favor, entre em contato com o suporte.');
+      setIsModalOpen(true);
+    }
   };
 
   return (
@@ -60,40 +79,40 @@ const Navbar = () => {
             <li>
               {user ? (
                 <>
-                <ul className={styles.links_list}>
-                <li>
-                    <NavLink to="/cursos" className={({ isActive }) => (isActive ? styles.active : '')}>
-                      CURSOS
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/artigos" className={({ isActive }) => (isActive ? styles.active : '')}>
-                      ARTIGOS
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/dashboard" className={({ isActive }) => (isActive ? styles.active : '')}>
-                      DASHBOARD
-                    </NavLink>
-                  </li>
-                  <li className={styles.dropdown}>
-                    <button onClick={toggleDropdown} className={styles.dropdownButton}>
-                      PUBLICAR
-                    </button>
-                    {isDropdownOpen && (
-                      <div className={styles.dropdownContent}>
-                        <NavLink to="/criar-publicacao" className={styles.dropdownItem}>
-                          Criar uma Publicação
-                        </NavLink>
-                        <NavLink to="/criar-curso" className={styles.dropdownItem}>
-                          Criar um Curso
-                        </NavLink>
-                        <NavLink to="/criar-artigo" className={styles.dropdownItem}>
-                          Publicar Artigo
-                        </NavLink>
-                      </div>
-                    )}
-                  </li>
+                  <ul className={styles.links_list}>
+                    <li>
+                      <NavLink to="/cursos" className={({ isActive }) => (isActive ? styles.active : '')}>
+                        CURSOS
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/artigos" className={({ isActive }) => (isActive ? styles.active : '')}>
+                        ARTIGOS
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/dashboard" className={({ isActive }) => (isActive ? styles.active : '')}>
+                        DASHBOARD
+                      </NavLink>
+                    </li>
+                    <li className={styles.dropdown}>
+                      <button onClick={toggleDropdown} className={styles.dropdownButton}>
+                        PUBLICAR
+                      </button>
+                      {isDropdownOpen && (
+                        <div className={styles.dropdownContent}>
+                          <NavLink to="/criar-publicacao" className={styles.dropdownItem}>
+                            Criar uma Publicação
+                          </NavLink>
+                          <NavLink to="/criar-curso" className={styles.dropdownItem}>
+                            Criar um Curso
+                          </NavLink>
+                          <NavLink to="/criar-artigo" className={styles.dropdownItem}>
+                            Publicar Artigo
+                          </NavLink>
+                        </div>
+                      )}
+                    </li>
                   </ul>
                 </>
               ) : (
@@ -105,6 +124,18 @@ const Navbar = () => {
           </ul>
           <div className={styles.brand}>
             <ul className={styles.links_list}>
+              <li className={styles.dropdown}>
+                <button onClick={toggleDropdownTwo} className={styles.button}>
+                  <SlOptionsVertical className={styles.icon} />
+                </button>
+                {isDropdownOpenTwo && (
+                  <div className={styles.dropdownContent}>
+                    <button onClick={handlePetianoAreaClick} className={styles.dropdownItem}>
+                      Área do Petiano
+                    </button>
+                  </div>
+                )}
+              </li>
               <li>
                 <button onClick={() => openModal(<DocumentSearch onClose={closeModal} />)} className={styles.button}>
                   <FiSearch className={styles.icon} />
@@ -132,7 +163,7 @@ const Navbar = () => {
         </nav>
       </div>
       <Modal isOpen={isModalOpen} onClose={closeModal}>
-        {modalContent}
+        {modalMessage ? <p>{modalMessage}</p> : modalContent}
       </Modal>
     </>
   );
